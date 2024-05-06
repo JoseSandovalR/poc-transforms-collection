@@ -30,7 +30,7 @@ jobs:
       run: |
         git config --global user.email "jose.sandovalr7@gmail.com"
         git config --global user.name "JoseSandovalR"
-        git remote set-url origin https://x-access-token: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@github.com/JoseSandovalR/poc-transforms-collection.git
+        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/JoseSandovalR/poc-transforms-collection.git
     
     - name: Commit and push if it's necessary
       run: |
