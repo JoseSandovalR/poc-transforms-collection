@@ -26,12 +26,12 @@ jobs:
     - name: Convert Postman collection to OpenAPI
       run: p2o NewCollection.postman_collection.json -f openapi.yaml
 
-    - name: Set up Git credentials using UR
+    - name: Set up Git credentials using URL
       run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
         git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/JoseSandovalR/poc-transforms-collection.git
-
+    
     - name: Commit and push if it's necessary
       run: |
         git add openapi.yaml
