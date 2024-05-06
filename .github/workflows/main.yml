@@ -3,7 +3,7 @@ name: Convert Postman Collection to OpenAPI
 on:
   push:
     branches:
-      - main  # Cambia 'main' por el nombre de tu rama si es diferente
+      - main  # Cambia 'main' por el nombre de tu rama si es necesario
 
 jobs:
   convert:
@@ -18,10 +18,17 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '20'
 
     - name: Install postman-to-openapi
       run: npm install -g postman-to-openapi
+
+    - name: Remove existing OpenAPI file if it exists
+      run: |
+        if [ -f openapi.yaml ]; then
+          rm openapi.yaml
+          echo "Existing openapi.yaml removed."
+        fi
 
     - name: Convert Postman collection to OpenAPI
       run: p2o NewCollection.postman_collection.json -f openapi.yaml
