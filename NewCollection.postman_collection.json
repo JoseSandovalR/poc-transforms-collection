@@ -1,0 +1,36 @@
+{
+	"info": {
+		"_postman_id": "e9e4c85e-19b1-469e-b934-592f68a36230",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13580747"
+	},
+	"item": [
+		{
+			"name": "https://api.restful-api.dev/objects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+						"uuid": "201be74f-b0f6-4b55-83f9-0757d02bef2b"
+					}
+				],
+				"url": {
+					"raw": "https://api.restful-api.dev/objects",
+					"protocol": "https",
+					"host": [
+						"api",
+						"restful-api",
+						"dev"
+					],
+					"path": [
+						"objects"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
