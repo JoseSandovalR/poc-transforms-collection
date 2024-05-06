@@ -1,0 +1,41 @@
+name: Convert Postman Collection to OpenAPI
+
+on:
+  push:
+    branches:
+      - main  # Cambia 'main' por el nombre de tu rama si es diferente
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Importante para permitir el push de cambios
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install postman-to-openapi
+      run: npm install -g postman-to-openapi
+
+    - name: Convert Postman collection to OpenAPI
+      run: p2o postman_collection.json -o openapi.yaml
+
+   # - name: Set up Git credentials
+     # env:
+       # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+     # run: |
+       # git config --global user.email "you@example.com"
+       # git config --global user.name "Your Name"
+       # git config --global http.https://github.com/.extraheader "AUTHORIZATION: bearer ${{ secrets.GH_TOKEN }}"
+
+   # - name: Commit and push if it's necessary
+     # run: |
+       # git add openapi.yaml
+       # git commit -m "Update OpenAPI definition" || exit 0  # El commit fallará si no hay cambios
+       # git push origin main  # Especifíca la rama, reemplaza 'main' si es necesario
